@@ -21,6 +21,10 @@ current_player = "X"
 
 # Play game
 def play_game():
+    '''
+    main loop that only terminates on exiting
+    :return:Null
+    '''
     # display game board
     display_game_board()
 
@@ -42,6 +46,10 @@ def play_game():
 
 
 def display_game_board():
+    '''
+    writes the current state of the game board in console
+    :return:Null
+    '''
     print("\n")
     print(game_board[0] + " | " + game_board[1] + " | " + game_board[2] + "     1 | 2 | 3")
     print("---------")
@@ -52,6 +60,11 @@ def display_game_board():
 
 
 def handle_turn(player):
+    """
+    handles the turn console input process
+    :param player:currently playing player
+    :return:Null
+    """
     # input spot from player
     print(player + "'s turn.")
     spot = input("Choose a spot from 1-9: ")
@@ -67,7 +80,7 @@ def handle_turn(player):
         if game_board[spot] == "-":
             valid = True
         else:
-            print("Opps! You have entered an incorrect spot. Try again.")
+            print("Oops! You have entered an incorrect spot. Try again.")
 
     game_board[spot] = player
 
@@ -77,12 +90,19 @@ def handle_turn(player):
 
 # Check if game over
 def check_if_game_over():
+    '''
+    checks both wins and ties
+    :return:Null
+    '''
     check_for_winner()
     check_for_tie()
 
 
 # Check winner
 def check_for_winner():
+    '''
+    checks which player won the rows columns or diagonals
+    '''
     global winner
 
     row_winner = check_rows()
@@ -100,6 +120,10 @@ def check_for_winner():
 
 
 def check_rows():
+    '''
+    checks the board rows for a win
+    :return:the shape of the winner's piece
+    '''
     global game_still_on
 
     row_1 = game_board[0] == game_board[1] == game_board[2] != "-"
@@ -120,6 +144,10 @@ def check_rows():
 
 
 def check_columns():
+    '''
+    checks the board columns for a win
+    :return:the shape of the winner's piece
+    '''
     global game_still_on
 
     column_1 = game_board[0] == game_board[3] == game_board[6] != "-"
@@ -140,6 +168,10 @@ def check_columns():
 
 
 def check_diagonals():
+    '''
+    checks the board diagonals for a win
+    :return:the shape of the winner's piece
+    '''
     global game_still_on
 
     diagonal_1 = game_board[0] == game_board[4] == game_board[8] != "-"
@@ -158,6 +190,10 @@ def check_diagonals():
 
 # check tie
 def check_for_tie():
+    """
+    checks the board for blank spaces and ends the game if there arent any
+    :return Bool: whether the game ended
+    """
     global game_still_on
 
     if "-" not in game_board:
@@ -169,6 +205,9 @@ def check_for_tie():
 
 # Flip the current player
 def flip_player():
+    """
+    changes the current player when their turn ends
+    """
     global current_player
 
     if current_player == "X":
