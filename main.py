@@ -1,8 +1,6 @@
 import tkinter as tk
-import tkinter.messagebox
 
 root = tk.Tk()
-# tk.title('Tic Tac Toe Game')
 
 # game board to hold data
 
@@ -40,7 +38,7 @@ def play_game():
 
     # print the winner or tie
     if winner == "X" or winner == "O":
-        print(" Congratulations" + winner + "you won!")
+        print(" Congratulations " + winner + ",you won!")
     elif winner == None:
         print("Game draw.")
 
@@ -207,13 +205,14 @@ def check_for_tie():
 def flip_player():
     """
     changes the current player when their turn ends
+    :return:Null
     """
     global current_player
 
     if current_player == "X":
         current_player = "O"
-    elif current_player == "O":
-        current_player = "X"
+    else:
+        current_player == "X"
 
 
 # play game
