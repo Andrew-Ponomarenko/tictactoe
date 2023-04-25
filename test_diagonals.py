@@ -1,6 +1,6 @@
 import pytest
 
-from main import check_diagonals,game_board
+from functions import check_diagonals,game_still_on
 
 
 @pytest.fixture
@@ -8,8 +8,7 @@ def testboard():
     return ["X", "-", "O",
             "-", "X", "-",
             "-", "-", "X"]
-@pytest.main()
-def test_construction(testboard):
-    game_board == testboard
-    check_diagonals()
-    assert game_still_on == False
+
+
+def test_diagonals(testboard):
+    assert check_diagonals(testboard) == "X"
